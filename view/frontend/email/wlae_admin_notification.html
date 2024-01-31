@@ -1,0 +1,32 @@
+<!--
+/**
+ * Copyright © 2018 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject Wishlist Notification: {{var customerName}}'s Wishlist @-->
+<!--@vars {
+"var customerName":"Customer Name",
+"var customerEmail":"Customer Email",
+"var items|raw":"Wish List Items"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+<table>
+    <tr class="email-intro">
+        <td>
+            <h3 class="greeting"><strong>Wishlist Notification!</strong></h3>
+            <p>New product has been added to wishlist.</p>
+        </td>
+    </tr>
+    <tr class="email-summary">
+        <td>
+            <p><strong>Details:</strong></p>
+            <p>{{trans "Customer Name: %customer_name" customer_name=$customerName}}</p>
+            <p>{{trans "Customer Email: %customer_email" customer_email=$customerEmail}}</p>
+            <br />
+            {{var items|raw}}
+        </td>
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}
