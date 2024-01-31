@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2018 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="metab" translate="label" sortOrder="500">
+            <label>Magevolve Extensions</label>
+        </tab>
+        <section id="wlae" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Wish List Admin Email</label>
+            <tab>metab</tab>
+            <resource>Me_Wlae::config_wlae</resource>
+            <group id="basic" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Basic</label>
+                <field id="active" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable extension.</comment>
+                </field>
+                <field id="segmentation" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Segmentation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Please select yes, if you would like to set specified customer groups for notification.</comment>
+                </field>
+                <field id="groups" translate="label comment" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled Customer Groups</label>
+                    <source_model>Me\Wlae\Model\Config\Source\Groups</source_model>
+                    <comment>Please select customer groups.</comment>
+                    <depends>
+                        <field id="segmentation">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="email" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Options</label>
+                <field id="items" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Wish List Items</label>
+                    <source_model>Me\Wlae\Model\Config\Source\Items</source_model>
+                    <comment>Please select to send only the recently added item, or the whole wish list. In the second option the newly added item will be marked.</comment>
+                </field>
+                <field id="recipient_email" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails To</label>
+                    <validate>required-entry validate-email</validate>
+                    <comment>Please enter the email address where notification will be sent.</comment>
+                </field>
+                <field id="bcc_email" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send BCC Emails To</label>
+                    <validate>validate-email</validate>
+                    <comment>Please enter the bcc copy email address where notification will be also sent.</comment>
+                </field>
+                <field id="sender_email_identity" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                    <comment>Please select the email sender from store email addresses.</comment>
+                </field>
+                <field id="email_template" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <comment>Please select the custom email template or use the default.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

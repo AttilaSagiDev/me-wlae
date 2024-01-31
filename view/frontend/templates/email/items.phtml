@@ -1,0 +1,125 @@
+<?php
+/**
+ * Copyright © 2018 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var $block \Me\Wlae\Block\Email\Items
+ * @see \Me\Wlae\Block\Email\Items
+ */
+?>
+<?php if ($block->getWishlistItemsCount()) : ?>
+    <?php if ($block->getShowAllItems()) : ?>
+        <table class="email-items">
+            <thead>
+            <tr>
+                <th class="item-info"></th>
+                <th class="item-info" style="font-size: 13px;"><?php /* @noEscape */ echo __('Product Name') ?></th>
+                <th class="item-price" style="font-size: 13px;">
+                    <?php /* @noEscape */ echo $block->getPriceLabel() ?>
+                </th>
+                <th class="item-qty" style="font-size: 13px;"><?php /* @noEscape */ echo __('Qty') ?></th>
+                <th class="item-info"></th>
+            </tr>
+            </thead>
+            <?php $currentlyAddedId = $block->getCurrentItem()->getId(); ?>
+            <?php /** @var $item \Magento\Wishlist\Model\Item */ ?>
+            <?php foreach ($block->getWishlistItems() as $item) : ?>
+                <tbody>
+                <tr>
+                    <td class="item-info">
+                        <a href="<?php /* @noEscape */ echo $block->getProductUrl($item) ?>">
+                            <?php echo $block->getImage($item->getProduct(), 'product_small_image')->toHtml(); ?>
+                        </a>
+                    </td>
+                    <td class="item-info">
+                        <a href="<?php /* @noEscape */ echo $block->getProductUrl($item) ?>">
+                            <strong>
+                                <?php /* @noEscape */ echo $block->escapeHtml($item->getProduct()->getName()) ?>
+                            </strong>
+                        </a>
+                        <br/>
+                        <span style="font-size: 12px;">
+                            <?php /* @noEscape */ echo __('Sku: ') ?>
+                            <?php /* @noEscape */ echo $block->escapeHtml($item->getProduct()->getSku()) ?>
+                        </span>
+                        <?php if ($currentlyAddedId == $item->getId()) : ?>
+                            <br/><span style="font-size: 12px; color: #F00">
+                                <?php /* @noEscape */ echo __('Just Added') ?>
+                            </span>
+                        <?php endif; ?>
+                    </td>
+                    <td class="item-price">
+                        <?php echo $block->getProductPriceHtml($item->getProduct()) ?>
+                    </td>
+                    <td class="item-qty">
+                        <?php /* @noEscape */ echo round($item->getQty()) ?>
+                    </td>
+                    <td class="item-info">
+                        <a href="<?php /* @noEscape */ echo $block->getProductUrl($item) ?>">
+                            <?php /* @noEscape */ echo __('View Product') ?>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            <?php endforeach; ?>
+        </table>
+
+    <?php else : ?>
+        <table class="email-items">
+            <thead>
+            <tr>
+                <th class="item-info"></th>
+                <th class="item-info" style="font-size: 13px;"><?php /* @noEscape */ echo __('Product Name') ?></th>
+                <th class="item-price" style="font-size: 13px;">
+                    <?php /* @noEscape */ echo $block->getPriceLabel() ?>
+                </th>
+                <th class="item-qty" style="font-size: 13px;"><?php /* @noEscape */ echo __('Qty') ?></th>
+                <th class="item-info"></th>
+            </tr>
+            </thead>
+            <?php /** @var $item \Magento\Wishlist\Model\Item */ ?>
+            <?php $item = $block->getCurrentItem(); ?>
+            <?php $currentlyAddedId = $item->getId(); ?>
+            <tbody>
+            <tr>
+                <td class="item-info">
+                    <a href="<?php /* @noEscape */ echo $block->getProductUrl($item) ?>">
+                        <?php echo $block->getImage($item->getProduct(), 'product_small_image')->toHtml(); ?>
+                    </a>
+                </td>
+                <td class="item-info">
+                    <a href="<?php /* @noEscape */ echo $block->getProductUrl($item) ?>">
+                        <strong>
+                            <?php /* @noEscape */ echo $block->escapeHtml($item->getProduct()->getName()) ?>
+                        </strong>
+                    </a>
+                    <br/>
+                    <span style="font-size: 12px;">
+                        <?php /* @noEscape */ echo __('Sku: ') ?>
+                        <?php /* @noEscape */ echo $block->escapeHtml($item->getProduct()->getSku()) ?>
+                    </span>
+                    <?php if ($currentlyAddedId == $item->getId()) : ?>
+                        <br/><span style="font-size: 12px; color: #F00">
+                            <?php /* @noEscape */ echo __('Just Added') ?>
+                        </span>
+                    <?php endif; ?>
+                </td>
+                <td class="item-price">
+                    <?php echo $block->getProductPriceHtml($item->getProduct()) ?>
+                </td>
+                <td class="item-qty">
+                    <?php /* @noEscape */ echo round($item->getQty()) ?>
+                </td>
+                <td class="item-info">
+                    <a href="<?php /* @noEscape */ echo $block->getProductUrl($item) ?>">
+                        <?php /* @noEscape */ echo __('View Product') ?>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    <?php endif; ?>
+<?php endif; ?>
