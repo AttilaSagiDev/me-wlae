@@ -110,11 +110,7 @@ http://magevolve.com/terms-and-conditions
  
 ## Support ##
  
-If you have any questions about the extension, please contact us:
- 
-E-mail: info@magevolve.com
-
-Monday - Friday, 9am - 5pm CET
+If you have any questions about the extension, please contact us.
 
 ## License ##
 
