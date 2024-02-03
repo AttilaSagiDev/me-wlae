@@ -101,12 +101,7 @@ Version 1.0.0 - June 12, 2016
 Clear the store cache, browser cookies, logout from backend and login back. 
  
 2. My configuration changes do not appear on the store.
-Clear the store cache, clear your browser cache and domain cookies and refresh the page. 
- 
-## Extension license ##
- 
-The module license description included in the Terms and Conditions:  
-http://magevolve.com/terms-and-conditions  
+Clear the store cache, clear your browser cache and domain cookies and refresh the page.
  
 ## Support ##
  
@@ -115,5 +110,3 @@ If you have any questions about the extension, please contact us.
 ## License ##
 
 See COPYING.txt for license details.
-
-Copyright © 2018 Magevolve Ltd. All rights reserved.
